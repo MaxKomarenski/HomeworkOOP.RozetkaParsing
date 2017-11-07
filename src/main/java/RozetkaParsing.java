@@ -15,7 +15,7 @@ public class RozetkaParsing {
     }
 
     private static void writeIntoCSVfile(ArrayList<String> nameOfFile, ArrayList<String> nameOfPeople, Map<String, String> dictionary, int el) throws FileNotFoundException, UnsupportedEncodingException {
-        String names_of_fiels = nameOfFile.get(el) + ".csv";
+        String names_of_fiels = "data/" + nameOfFile.get(el) + ".csv";
         PrintWriter pw = new PrintWriter(new OutputStreamWriter(new FileOutputStream(names_of_fiels), "Cp1251"));
         for(int t = 0; t < nameOfPeople.size(); t++){
             pw.println( nameOfPeople.get(t) + " -> Comment:  " + dictionary.get(nameOfPeople.get(t)));
@@ -30,6 +30,8 @@ public class RozetkaParsing {
         names = Names.namesOfRefrigerators();
         ArrayList<String> links;
         links = Links.linksofRefrigerators();
+        File dir = new File("data");
+        dir.mkdir();
 
         for (int el = 0; el < names.size(); el++) {
             String str_link = links.get(el);
